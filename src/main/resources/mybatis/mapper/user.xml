@@ -6,7 +6,7 @@
     </select>
 
     <select id="getUser" parameterType="String" resultType="yongs.temp.vo.User">
-        SELECT email, password FROM `user` WHERE email = #{email} 
+        SELECT email, password, name FROM `user` WHERE email = #{email} 
     </select>       
     <insert id="insertUser" parameterType="yongs.temp.vo.User">
     	INSERT INTO `user` (email, password, name) VALUES ( #{email}, #{password}, #{name} )

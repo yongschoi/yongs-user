@@ -48,6 +48,7 @@ public class AnyController {
     	} else {
     		status = HttpStatus.OK;
     		HttpEntity<User> entity = new HttpEntity<User>(loginUser);
+ 
     		// yongs-jwt 인증 서버 API 호출하여 access-token 리턴
     		ResponseEntity<String> response = restTemplate.exchange(
     				JWT_URI, 
