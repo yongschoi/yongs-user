@@ -15,7 +15,7 @@ import yongs.temp.vo.User;
 @Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);	
-
+ 
     @Autowired
     UserMapper mapper;
     @Autowired
@@ -28,8 +28,8 @@ public class UserService {
     	for(User user: users) {
     		List<String> roles = roleMapper.getRoles(user.getEmail());
 			user.setRoles(roles);
-    	}
-    	/*
+    	} 
+    	/* 
     	users.forEach(user -> {  
     		try {
     			List<String> roles = roleMapper.getRoles(user.getEmail());
@@ -39,7 +39,7 @@ public class UserService {
     		}
     	});
     	*/
-
+  
         return users;
     }
  

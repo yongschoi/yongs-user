@@ -33,8 +33,8 @@ public class CryptoUtil {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(msg.getBytes());
 		return CryptoUtil.byteToHexString(md.digest());
-	}
-	
+	} 
+	    
 	/**
 	 * SHA-256으로 해시한다.
 	 * 
@@ -46,7 +46,7 @@ public class CryptoUtil {
 		md.update(msg.getBytes());
 		return CryptoUtil.byteToHexString(md.digest());
 	}
-	
+	 
 	/**
 	 * 바이트 배열을 HEX 문자열로 변환한다.
 	 * @param data
