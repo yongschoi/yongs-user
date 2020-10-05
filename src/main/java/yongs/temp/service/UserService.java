@@ -20,15 +20,15 @@ public class UserService {
     UserMapper mapper;
     @Autowired
     RoleMapper roleMapper;
-    
+     
     public List<User> getUsers() throws Exception {
     	logger.debug("yongs-user|UserService|getUsers()");
     	List<User> users = mapper.getUsers();	
     	// 각 user에 대한 권한을 넣어준다.
     	for(User user: users) {
     		List<String> roles = roleMapper.getRoles(user.getEmail());
-			user.setRoles(roles);
-    	} 
+			user.setRoles(roles); 
+    	}  
     	/* 
     	users.forEach(user -> {  
     		try {
@@ -69,7 +69,7 @@ public class UserService {
 
     	return encrypted.equals(CryptoUtil.sha256(raw));
     }
-    
+     
     public void updateRoles(User user) throws Exception {
     	logger.debug("yongs-user|UserService|updateRoles()");    	
     	

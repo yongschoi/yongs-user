@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import yongs.temp.service.UserService;
 import yongs.temp.vo.User;
 
@@ -27,11 +28,11 @@ public class UserController {
     UserService service;
     
     @GetMapping("/all")
+    @ApiOperation(value="사용자목록", notes="전체 사용자 리스트를 리턴") // Swagger annotation
     public List<User> getUsers() throws Exception{
     	logger.debug("yongs-user|UserController|getUsers()");    	
         return service.getUsers();
-    }
-    
+    }   
     @PostMapping("/role/update")
     public void roleUpdate(@RequestBody User user) throws Exception{
     	logger.debug("yongs-user|UserController|roleUpdate()");
@@ -50,8 +51,7 @@ public class UserController {
     		status = HttpStatus.OK;
     		return new ResponseEntity<String>(status);
     	}	
-    }
-    
+    }  
     @PostMapping("/delete")
     public void deleteUser(@RequestBody User user) throws Exception{
     	logger.debug("yongs-user|UserController|deleteUser()");

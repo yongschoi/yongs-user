@@ -11,5 +11,4 @@ public class YongsUserApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(YongsUserApplication.class, args);
 	}
-
 }
