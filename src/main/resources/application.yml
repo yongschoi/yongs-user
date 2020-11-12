@@ -22,6 +22,10 @@ app:
     username: scott
     password: tiger
     maximum-pool-size: 5
+ 
+minio:
+  host: localhost
+  port: 9000
       
 spring:
   profiles: window-dev
@@ -37,6 +41,53 @@ eureka:
   instance:
     preferIpAddress: true
     hostname: localhost
+    instanceId: ${spring.application.name}:${random.value}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/    
+      
+---
+server:
+  port: 8080
+    
+logging:
+  level:
+    yongs:
+      temp: INFO
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF
+      
+app:
+  datasource:
+    jdbc-url: jdbc:mariadb://maria-db:3306/temp
+    driverClassName: org.mariadb.jdbc.Driver
+    username: scott
+    password: tiger
+    maximum-pool-size: 5
+
+minio:
+  host: minio
+  port: 9000
+        
+spring:
+  profiles: container
+  application:
+    name: yongs-user
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    baseUrl: http://zipkin:9411/
+    
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka
     instanceId: ${spring.application.name}:${random.value}
   client:
     registerWithEureka: true

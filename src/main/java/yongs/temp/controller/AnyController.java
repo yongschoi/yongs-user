@@ -8,15 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import yongs.temp.service.UserService;
 import yongs.temp.vo.User;
@@ -68,10 +71,9 @@ public class AnyController {
         return new ResponseEntity<String>(user !=null ? user.getEmail() : "", status);
     }  
     
-    @PostMapping("/create") /* Postman 프로그램으로 실행 */
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody User user) throws Exception{
+    @PostMapping(value = "/create",  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public void create(@RequestParam("file") MultipartFile file, @RequestPart("userStr") String  userStr) throws Exception{
     	logger.debug("yongs-user|AnyController|create()");
-        service.insertUser(user);
+    	service.insertUser(file, userStr);
     }
 }

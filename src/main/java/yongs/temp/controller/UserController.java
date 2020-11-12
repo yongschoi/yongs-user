@@ -32,7 +32,7 @@ public class UserController {
     public List<User> getUsers() throws Exception{
     	logger.debug("yongs-user|UserController|getUsers()");    	
         return service.getUsers();
-    }   
+    }    
     @PostMapping("/role/update")
     public void roleUpdate(@RequestBody User user) throws Exception{
     	logger.debug("yongs-user|UserController|roleUpdate()");

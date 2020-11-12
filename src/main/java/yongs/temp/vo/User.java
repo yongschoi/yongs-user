@@ -7,8 +7,15 @@ public class User {
 	private String email;
 	private String password;
 	private String name;
+	private String photo;
 	private List<String> roles;
 	
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public int getId() {
 		return id;
 	}
