@@ -32,13 +32,13 @@ public class UserController {
     public List<User> getUsers() throws Exception{
     	logger.debug("yongs-user|UserController|getUsers()");    	
         return service.getUsers();
-    }    
+    }   
     @PostMapping("/role/update")
     public void roleUpdate(@RequestBody User user) throws Exception{
     	logger.debug("yongs-user|UserController|roleUpdate()");
         service.updateRoles(user);    
     }
-    // Admin.vue에서 비번 체크
+    // AccountList.vue에서 비번 체크
     @PostMapping("/certificate")
     public ResponseEntity<String> certificate(@RequestBody User user, HttpServletResponse res) throws Exception{
     	logger.debug("yongs-user|LoginController|certificate()");

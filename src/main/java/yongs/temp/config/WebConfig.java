@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class WebConfig {
-	@LoadBalanced // @LoadBalanced가 없으면 docker 환경에서 eureka/zipkin call 이 안됨 
+	@LoadBalanced // @LoadBalanced가 없으면 eureka/zipkin call 이 안됨 
     @Bean  
     public RestTemplate restTemplate() {	
 		/* Connection Pool 방식을 사용하지 않으려면 */
